@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Journal</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+  </head>
+  <body>
+    <h1>Daily Journal</h1>
+
+    <form action="/journal/add" method="POST">
+      <label for="entry">Write your journal entry:</label><br><br>
+      <textarea name="title" row="1" cols=""50" placeholder="TITLE"></textarea><br>
+      <textarea name="entry" rows="5" cols="50" required></textarea><br><br>
+      <button type="submit">Save Entry</button>
+    </form>
+
+    <hr>
+
+    <h2>Previous Entries</h2>
+    <div id="entries">
+      <p>No entries yet!</p>
+    </div>
+  </body>
+</html>
