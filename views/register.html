@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+        <h1>Create your Space here</h1>
+        <form action="/user/register" method="POST">
+          <label for="username">Username:</label>
+          <input type="text" name="username" required><br><br>
+        <label>Email:</label><br>
+          <input type="email" name="email" required><br><br>
+          <label>Password:</label><br>
+          <input type="password" name="password" required><br><br>
+          <button type="submit">Register</button>
+        </form>
+        <p>Already have an account?<a href="/user/login">login then</a></p>
+</body>
+</html>
