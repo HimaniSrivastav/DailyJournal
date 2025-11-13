@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const { MongoClient } = require("mongodb");
 const journalRoutes = require("./routes/journalRoutes");
 const path = require("path");
@@ -10,9 +11,24 @@ const uri = process.env.MONGODB_URI;
 const app = express();
 const client = new MongoClient(uri);
 
+// Session setup
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {secure : false}
+}));
 // middleware, routes, etc.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.get("/test-session", (req, res) => {
+  if (!req.session.views) {
+    req.session.views = 1;
+  } else {
+    req.session.views++;
+  }
+  res.send(`Session working! You visited ${req.session.views} times`);
+});
 app.use(express.static(path.join(__dirname, "public")));
 
 client

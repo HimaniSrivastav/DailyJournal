@@ -18,5 +18,16 @@ router.get('/register', (req,res) =>{
 
 router.post('/register', userController.registerUser);
 
+//  Logout route
+router.get('/logout', (req, res) =>{
+  req.session.destroy((err)=>{
+    if(err){
+      console.error("Error during logout:", err);
+      return res.status(500).send("Trouble in logging out.");
+    }
+    res.clearCookie('connect.sid');
+    res.redirect('/');
+  })
+})
 
 module.exports = router;

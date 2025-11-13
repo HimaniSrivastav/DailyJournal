@@ -56,6 +56,13 @@ const loginUser = (req, res) =>{
 }
 
       console.log("User logged in:", user._id);
+
+      // Set user session
+      req.session.user={
+        id: user._id,
+        // username: user.username,
+        email: user.email
+      }
       res.redirect("/journal");
     });
   })  .catch(err => {
