@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const { getJournal, addEntry, getAllEntries } = require("../controllers/journalController");
-const { ensureLoggedIn } = require("../middleware/authMiddleware").ensureLoggedIn;
+const { ensureLoggedIn } = require("../middleware/authMiddleware");
 
 // Get /journal -> Show journal page
 router.get("/", ensureLoggedIn, getJournal);
